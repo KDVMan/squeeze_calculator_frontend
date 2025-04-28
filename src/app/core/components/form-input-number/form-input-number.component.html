@@ -1,0 +1,19 @@
+<div [formGroup]="formGroup" [ngbTooltip]="tooltip" [openDelay]="tooltipDelay">
+    <input type="text"
+           [formControlName]="name"
+           [style.width]="width ? width + 'rem' : widthHalf ? '50%' : widthMax ? '100%' : ''"
+           [style.text-align]="align"
+           selectOnFocus
+           numberOnly
+           zeroNumber
+           [allow-sign]="allowSign"
+           [allow-decimal]="allowDecimal"
+           [decimal-separator]="decimalSeparator"
+           [max-length]="maxLength"
+           [max-decimal-length]="maxDecimalLength"
+           [placeholder]="placeholder"/>
+
+    <span class="ms-1" *ngIf="addString">
+		{{ addString }}
+	</span>
+</div>

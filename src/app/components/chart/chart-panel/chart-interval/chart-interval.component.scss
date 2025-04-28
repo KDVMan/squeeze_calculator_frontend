@@ -1,0 +1,40 @@
+:host {
+    height: 100%;
+
+    > div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .intervals {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            span {
+                display: flex;
+                align-items: center;
+                padding: 0 0.5rem;
+                height: 100%;
+
+                &:last-child {
+                    margin-right: 1rem;
+                }
+
+                &:hover {
+                    background: var(--blue-01);
+                    color: #fff;
+                    cursor: pointer;
+
+                    &.active {
+                        color: #fff;
+                    }
+                }
+
+                &.active {
+                    color: var(--blue-01);
+                }
+            }
+        }
+    }
+}

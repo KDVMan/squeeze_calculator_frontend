@@ -1,0 +1,7 @@
+<div [formGroup]="formGroup">
+	<label>Привязка</label>
+
+	<select formControlName="bind" multiple>
+		<option *ngFor="let bind of binds" [value]="bind.value">{{ bind.key }}</option>
+	</select>
+</div>

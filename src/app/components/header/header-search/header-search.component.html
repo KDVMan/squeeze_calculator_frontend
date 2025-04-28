@@ -1,0 +1,13 @@
+<div (clickOutside)="onClickOutside()" click-outside>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="symbol" #searchInput (keydown.escape)="loaded = false" (focus)="focused = true" [inputRestriction]="regex" uppercase selectOnFocus>
+    </form>
+
+    <ng-container *ngIf="loaded && symbols">
+        <ul (click)="onSelect($event)">
+            <li *ngFor="let symbol of symbols">
+                {{ symbol }}
+            </li>
+        </ul>
+    </ng-container>
+</div>

@@ -1,0 +1,13 @@
+{
+    "api": {
+        "url": "http://127.0.0.1:8889/api/",
+        "ws": "ws://127.0.0.1:8889/ws"
+    },
+    "settings": {
+        "formDebounceTime": 300
+    },
+    "pagination": {
+        "onPage": 20,
+        "onNav": 5
+    }
+}

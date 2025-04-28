@@ -1,0 +1,37 @@
+<div [formGroup]="formGroup"
+	 ngbDropdown
+	 #dropdown="ngbDropdown"
+	 [dropdownClass]="allowTextInput ? 'dropdown-input' : container ? 'dropdown-body' : ''"
+	 [class.disabled]="!enabled"
+	 [scrollToActive]="dropdown.isOpen()"
+	 [style.width]="width ? width + 'rem' : widthMax ? '100%' : 'auto'"
+	 [container]="container"
+	 [autoClose]="names === null ? true : 'outside'">
+
+	<ng-container *ngIf="allowTextInput; else text">
+		<div class="input">
+			<div class="arrow" (click)="dropdown.toggle()"></div>
+			<input type="text" [formControlName]="name"/>
+		</div>
+	</ng-container>
+
+	<ng-template #text>
+		<div ngbDropdownToggle (click)="!enabled && dropdown.toggle()" [class]="container ? 'toggle-body' : ''">
+			<span>{{ (itemActive?.value | translate) || '' }}</span>
+		</div>
+	</ng-template>
+
+	<div ngbDropdownMenu [style.max-height]="menuHeightMax ? menuHeightMax + 'rem' : 'auto'">
+		<div ngbDropdownItem *ngIf="addEmpty" (click)="onSelect(null)">
+			<div>&nbsp;</div>
+		</div>
+
+		<div ngbDropdownItem *ngFor="let item of items" [class.active]="itemActive?.key === item.key">
+			<input type="checkbox" *ngIf="names" [checked]="isChecked(item)" (change)="onCheck(item, $event)">
+
+			<div (click)="onSelect(item)">
+				{{ item.value | translate }}
+			</div>
+		</div>
+	</div>
+</div>

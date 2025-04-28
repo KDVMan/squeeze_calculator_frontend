@@ -1,0 +1,16 @@
+<table [formGroup]="formGroup">
+	<ng-container *ngFor="let direction of directions">
+		<tr [formGroupName]="direction.name">
+			<td>{{ direction.title }}</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2" [tooltip]="'Текст'"/>
+					<app-form-input-color [name]="'background'" [width]="2" class="me-2" [tooltip]="'Фон'"/>
+					<app-form-input-number [name]="'horizontalPadding'" [width]="3" [maxLength]="3" [align]="'center'" class="me-2" [tooltip]="'Горизонтальный отступ'"/>
+					<app-form-input-number *ngIf="direction.name === 'vertical'" [name]="'verticalPadding'" [width]="3" [maxLength]="3" [align]="'center'" [tooltip]="'Вертикальный отступ'"/>
+				</div>
+			</td>
+		</tr>
+	</ng-container>
+</table>

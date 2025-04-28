@@ -1,0 +1,64 @@
+<table [formGroup]="formGroup">
+	<tr>
+		<td>Процент прокрутки (минимум)</td>
+
+		<td>
+			<app-form-input-number [name]="'minLevelPercent'" [width]="3" [maxLength]="2"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Процент прокрутки (максимум)</td>
+
+		<td>
+			<app-form-input-number [name]="'maxLevelPercent'" [width]="3" [maxLength]="2"></app-form-input-number>
+		</td>
+	</tr>
+
+	<ng-container *ngFor="let direction of directions">
+		<tr>
+			<th colspan="2">
+				<span>{{ direction.title }}</span>
+			</th>
+		</tr>
+
+		<tbody formGroupName="border">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Контур
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="body">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Тело
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</ng-container>
+</table>

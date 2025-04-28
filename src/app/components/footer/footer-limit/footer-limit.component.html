@@ -1,0 +1,13 @@
+<div class="field" *ngFor="let limit of limits">
+	<span>{{ 'exchange-limit.' + limit.key | translate }}</span>
+
+	<div *ngIf="limit.totalLeft != null; else defaultBlock">
+		<span>{{ limit.totalLeft }}</span>
+		<span>{{ limit.total }}</span>
+	</div>
+</div>
+
+<ng-template #defaultBlock>
+	<span>-</span>
+	<span>-</span>
+</ng-template>

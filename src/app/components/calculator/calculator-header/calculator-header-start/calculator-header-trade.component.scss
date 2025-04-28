@@ -1,0 +1,12 @@
+.btn-trade {
+    color: #fff;
+    background: var(--green-01);
+    padding: 0 0.9rem;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #fff;
+        background: var(--green-02);
+    }
+}

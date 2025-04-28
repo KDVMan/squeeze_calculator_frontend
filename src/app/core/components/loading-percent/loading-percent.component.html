@@ -1,0 +1,42 @@
+<div class="loading" [style.width]="size + 'rem'" [style.height]="size + 'rem'">
+	<svg viewBox="0 0 100 100">
+		<circle [attr.stroke-width]="inThickness"
+				[attr.stroke]="inBorderColor"
+				[attr.fill]="inBackgroundColor"
+				[attr.r]="radius"
+				cx="50%"
+				cy="50%">
+		</circle>
+
+		<circle [attr.stroke-width]="outThickness"
+				[style.strokeDasharray]="strokeDash"
+				[style.strokeDashoffset]="strokeDashoffset"
+				[attr.stroke]="outBorderColor"
+				[attr.fill]="outBackgroundColor"
+				[attr.r]="radius"
+				cx="50%"
+				cy="50%">
+		</circle>
+
+		<text *ngIf="text"
+			  x="50%"
+			  y="50%"
+			  text-anchor="middle"
+			  alignment-baseline="central"
+			  [style.fill]="textColor"
+			  [style.font-weight]="textWeight">
+			<tspan x="50%" y="46%" *ngIf="text">{{ text }}</tspan>
+			<tspan x="50%" y="68%" *ngIf="text">{{ textFormat }}</tspan>
+		</text>
+
+		<text *ngIf="text === null"
+			  x="50%"
+			  y="50%"
+			  text-anchor="middle"
+			  alignment-baseline="central"
+			  [style.fill]="textColor"
+			  [style.font-weight]="textWeight">
+			{{ textFormat }}
+		</text>
+	</svg>
+</div>

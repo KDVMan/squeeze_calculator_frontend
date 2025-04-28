@@ -1,0 +1,9 @@
+@use 'ngx-toastr/toastr' as *;
+
+.toast-container .ngx-toastr {
+    box-shadow: none;
+}
+
+.toast-error {
+    background-color: #b1312f;
+}

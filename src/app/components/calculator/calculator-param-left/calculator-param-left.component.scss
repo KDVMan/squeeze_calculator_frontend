@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.field {
+    > label {
+        margin-bottom: 0.3rem;
+        color: var(--gray-06);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}

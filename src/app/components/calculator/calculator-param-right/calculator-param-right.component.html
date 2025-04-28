@@ -1,0 +1,38 @@
+<div class="row gx-2 h-100 calculator" *ngIf="show">
+	<div class="col col-8">
+		<div class="row gx-2">
+			<div class="col">
+				<app-calculator-param-window [formGroup]="formGroup"/>
+			</div>
+
+			<div class="col">
+				<app-calculator-param-direction [formGroup]="formGroup"/>
+			</div>
+		</div>
+
+		<div class="row gx-2 my-3">
+			<div class="col">
+				<app-calculator-param-interval [formGroup]="formGroup"/>
+			</div>
+
+			<div class="col">
+				<app-calculator-param-algorithm [formGroup]="formGroup"/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<app-calculator-param-iteration [formGroup]="formGroup"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<app-calculator-param-bind [formGroup]="formGroup"/>
+	</div>
+
+	<app-calculator-param-in [formGroup]="formGroup"/>
+	<app-calculator-param-out [formGroup]="formGroup"/>
+	<app-calculator-param-stop-time [formGroup]="formGroup"/>
+	<app-calculator-param-stop-percent [formGroup]="formGroup"/>
+</div>

@@ -1,0 +1,7 @@
+<div>
+    <div class="intervals">
+        <span *ngFor="let interval of intervals" (click)="onClick(interval)" [class.active]="interval.active">{{ ('M001.' + interval.name) | translate }}</span>
+    </div>
+
+    <app-chart-interval-select/>
+</div>

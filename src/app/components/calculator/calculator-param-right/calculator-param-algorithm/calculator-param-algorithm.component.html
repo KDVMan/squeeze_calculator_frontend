@@ -1,0 +1,8 @@
+<label>Алгоритм</label>
+
+<app-form-select [name]="'algorithm'"
+                 [widthMax]="true"
+                 [items]="algorithms"
+                 [item]="formGroup.get('algorithm').value ? { key: formGroup.get('algorithm').value, value: formGroup.get('algorithm').value } : { key: '', value: '' }"
+                 [addEmpty]="false"
+                 [allowChanged]="true"/>

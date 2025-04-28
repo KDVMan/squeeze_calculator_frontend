@@ -1,0 +1,15 @@
+<div [formGroup]="formGroup">
+	<input [formControlName]="name"
+		   [style.width]="width ? width + 'rem' : widthMax ? '100%' : ''"
+		   [style.height]="height ? height + 'rem' : ''"
+		   [(colorPicker)]="color"
+		   [value]="color"
+		   [style.background]="color"
+		   [cpOutputFormat]="'hex'"
+		   [cpAlphaChannel]="'forced'"
+		   [cpEyeDropper]="true"
+		   [cpSaveClickOutside]="true"
+		   (colorPickerChange)="onChangeColor($event)"
+		   [ngbTooltip]="tooltip"
+		   [openDelay]="tooltipDelay">
+</div>

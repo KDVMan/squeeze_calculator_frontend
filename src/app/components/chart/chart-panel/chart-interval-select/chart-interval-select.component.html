@@ -1,0 +1,26 @@
+<div class="interval" *ngIf="activeInterval && activeInterval.active && !activeInterval.favorite">
+    {{ ('M001.' + activeInterval.name) | translate }}
+</div>
+
+<div ngbDropdown #dropdown="ngbDropdown" dropdownClass="favorite">
+    <button ngbDropdownToggle>
+        <svg-icon [name]="dropdown.isOpen() ? 'select-up' : 'select-down'"></svg-icon>
+    </button>
+
+    <div ngbDropdownMenu>
+        <div ngbDropdownAnchor *ngFor="let interval of intervals" (click)="onClick(interval)" [class.active]="interval.active">
+            <div class="left">
+                {{ ('M002.' + interval.name) | translate }}
+            </div>
+
+            <div class="right"
+                 (click)="onFavorite($event, interval)"
+                 (mouseenter)="hoverFavorite = true"
+                 (mouseleave)="hoverFavorite = false">
+
+                <svg-icon [name]="interval.favorite ? 'favorite-fill' : (hoverFavorite ? 'favorite-fill' : 'favorite')"
+                          [svgStyle]="{'fill': interval.favorite ? '#ff9500' : '#ffffff'}"></svg-icon>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="row g-2" [formGroup]="formGroup">
+	<div class="col col-auto">
+		<input type="checkbox" class="toggle" formControlName="stopPercent"/>
+	</div>
+
+	<div class="col">
+		<label>Стоп процент от</label>
+		<app-form-input-number [name]="'stopPercentFrom'" [widthMax]="true" [allowDecimal]="true" [maxDecimalLength]="2"/>
+	</div>
+
+	<div class="col">
+		<label>Стоп процент до</label>
+		<app-form-input-number [name]="'stopPercentTo'" [widthMax]="true" [allowDecimal]="true" [maxDecimalLength]="2"/>
+	</div>
+
+	<div class="col">
+		<label>Шаг</label>
+		<app-form-input-number [name]="'stopPercentStep'" [widthMax]="true" [allowDecimal]="true" [maxDecimalLength]="2"/>
+	</div>
+</div>

@@ -1,0 +1,132 @@
+.cdk-overlay-container {
+    z-index: 2000;
+}
+
+.datetime-picker {
+    .owl-dt-popup-container {
+        background: #F2F4F7;
+        border: 0.1rem solid #cbcbcb;
+        border-radius: 0 0 0.1rem 0.1rem;
+        box-shadow: none;
+        top: 0.2rem;
+
+        .owl-dt-calendar-control {
+            .owl-dt-calendar-control-content {
+                .owl-dt-control-period-button {
+                    &:hover {
+                        background: #F2F4F7;
+                    }
+                }
+            }
+
+            .owl-dt-control-arrow-button {
+                &:hover {
+                    color: var(--blue-01);
+                }
+            }
+        }
+
+        .owl-dt-calendar-table {
+            .owl-dt-calendar-cell-in-range {
+                background: rgba(42, 149, 255, 0.15);
+            }
+
+            .owl-dt-calendar-cell {
+                .owl-dt-calendar-cell-today {
+                    box-shadow: none;
+
+                    &:not(.owl-dt-calendar-cell-selected) {
+                        color: var(--blue-01);
+                        background: none;
+                        border: none;
+
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            .owl-dt-calendar-header {
+                .owl-dt-weekdays {
+                    th {
+                        font-size: 0.95rem;
+                        padding: 0 0 0.5rem 0;
+                    }
+                }
+            }
+
+            .owl-dt-calendar-cell-content {
+                font-size: 0.95rem;
+
+                &:hover {
+                    color: #fff;
+                    background: var(--blue-01) !important;
+                    border: none;
+                }
+            }
+
+            .owl-dt-calendar-cell-selected {
+                color: #fff;
+                background: var(--blue-01);
+                border: none;
+            }
+        }
+
+        .owl-dt-calendar-multi-year-view {
+            .owl-dt-control-arrow-button {
+                &:hover {
+                    color: var(--blue-01);
+                }
+            }
+        }
+    }
+
+    .owl-dt-container-info {
+        padding: 0;
+
+        .owl-dt-container-range {
+            padding: 0.1rem 1rem 0 1rem;
+
+            &:hover {
+                background: var(--gray-02);
+                cursor: pointer;
+            }
+
+            .owl-dt-container-range-content {
+                .owl-dt-container-info-label, left,
+                .owl-dt-container-info-value {
+                    font-size: 0.95rem;
+                    color: #000;
+                }
+            }
+
+            span {
+                background: none;
+            }
+        }
+    }
+
+    .owl-dt-container-control-button {
+        .owl-dt-control-button-content {
+            color: #000;
+            padding: 0.1rem 0 0 0;
+
+            &:hover {
+                color: #fff;
+                background: var(--blue-01)
+            }
+        }
+    }
+}
+
+
+.owl-dt-container-disabled,
+.owl-dt-trigger-disabled {
+    opacity: 1;
+
+    input {
+        background: var(--gray-02);
+        cursor: not-allowed !important;
+    }
+}

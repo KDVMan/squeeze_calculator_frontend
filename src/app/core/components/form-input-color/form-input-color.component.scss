@@ -1,0 +1,8 @@
+input {
+    color: transparent;
+    cursor: pointer;
+
+    &::selection {
+        background: transparent;
+    }
+}

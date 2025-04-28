@@ -1,0 +1,61 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--component-background);
+    border: 0.1rem solid var(--component-border);
+    border-radius: 0.2rem;
+    height: 100%;
+}
+
+.symbols {
+    overflow: auto;
+
+    > .symbol {
+        display: flex;
+        padding: 0.5rem;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 0.1rem solid var(--gray-02);
+        }
+
+        .left {
+            div {
+                &:nth-child(2),
+                &:nth-child(3) {
+                    font-size: 0.7rem;
+                    margin-top: 0.2rem;
+                }
+            }
+        }
+
+        .right {
+            text-align: right;
+            margin-left: auto;
+
+            &.up {
+                color: var(--green-02);
+            }
+
+            &.down {
+                color: var(--red-02);
+            }
+        }
+
+        &.active,
+        &:hover {
+            background: var(--gray-02);
+        }
+
+        &.active {
+            .left {
+                div {
+                    &:first-child {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<label>
+    Окно
+
+    <span *ngIf="formGroup.get('window').value as windowValue">
+        ({{ windowValue | minuteDisplay }})
+    </span>
+</label>
+
+<app-form-input-number [name]="'window'" [widthMax]="true"/>

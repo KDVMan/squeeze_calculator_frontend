@@ -1,0 +1,46 @@
+.modal-table {
+    padding: 0.5rem 1rem;
+    width: 100%;
+
+    table {
+        width: 100%;
+
+        > tr {
+            &:not(:last-child) {
+                border-bottom: 0.05rem solid var(--gray-03);
+            }
+
+            > th,
+            > td {
+                border: none;
+                vertical-align: middle;
+                padding: 0.3rem 0.5rem;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+
+                &:not(:last-child) {
+                    border-right: 0.05rem solid var(--gray-03);
+                }
+
+                &.minimum {
+                    width: 1%;
+                }
+
+                &.no-break,
+                .no-break {
+                    white-space: nowrap;
+                }
+            }
+
+            > th {
+                font-weight: bold;
+            }
+        }
+    }
+}

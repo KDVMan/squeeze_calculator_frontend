@@ -1,0 +1,101 @@
+:host {
+    //position: relative;
+    display: flex;
+    flex-direction: column;
+    //background: var(--component-background);
+    //border: 0.1rem solid var(--component-border);
+    //border-radius: 0.2rem;
+    //height: 100%;
+    //overflow-x: auto;
+}
+
+table {
+    > tr {
+        &:not(:first-child) {
+            &.selected,
+            &:hover {
+                background: var(--gray-02);
+                cursor: pointer;
+            }
+        }
+
+        &:not(:last-child) {
+            > td {
+                border-bottom: 0.1rem solid var(--gray-02);
+            }
+        }
+
+        > th,
+        > td {
+            padding: 0.5rem;
+            white-space: nowrap;
+        }
+
+        > th {
+            position: sticky;
+            font-weight: normal;
+            background: #fff;
+            padding: 0.5rem;
+            top: 0;
+            cursor: pointer;
+
+            > div {
+                display: flex;
+                align-items: center;
+
+                //> input {
+                //    font-size: 0.7rem;
+                //    padding: 0 0.2rem;
+                //    margin-left: 0.5rem;
+                //    width: 2.2rem;
+                //    height: 1.5rem;
+                //}
+
+                > svg-icon {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 0.2rem;
+                }
+            }
+
+            > svg-icon {
+                display: flex;
+                align-items: center;
+                fill: var(--gray-04);
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-left: auto;
+
+                &[ng-reflect-name="toggle-on"] {
+                    fill: var(--blue-01);
+                }
+
+                &:hover {
+                    fill: var(--blue-01-hover);
+                    cursor: pointer;
+                }
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-bottom: 0.1rem solid var(--gray-02);
+                z-index: 2;
+            }
+        }
+
+        > td {
+            .create {
+                color: var(--blue-01);
+
+                &:hover {
+                    color: var(--blue-02);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

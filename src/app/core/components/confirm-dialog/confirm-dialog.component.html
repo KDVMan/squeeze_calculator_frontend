@@ -1,0 +1,14 @@
+<div *ngIf="confirmDialog" class="modal fade show confirm-dialog" data-bs-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				{{ confirmDialog.message }}
+			</div>
+
+			<div class="modal-footer">
+				<button class="btn btn-yes" (click)="confirmDialog.yesFunction()">Да</button>
+				<button class="btn btn-no" (click)="confirmDialog.noFunction()">Отмена</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<label>Таймфрейм</label>
+
+<app-form-select [name]="'interval'"
+                 [widthMax]="true"
+                 [items]="intervals"
+                 [item]="formGroup.get('interval').value ? { key: formGroup.get('interval').value, value: 'M002.' + formGroup.get('interval').value } : { key: '', value: '' }"
+                 [addEmpty]="false"
+                 [allowChanged]="true"/>

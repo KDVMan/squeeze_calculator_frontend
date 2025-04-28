@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: #323a42;
+    padding: 0 0.5rem;
+    height: 4rem;
+
+    > .logo {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

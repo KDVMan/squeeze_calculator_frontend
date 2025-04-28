@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1rem solid var(--component-border);
+    padding: 0 0.5rem;
+    height: 3rem;
+
+    > .field {
+        max-width: 50%;
+
+        &:not(:last-child) {
+            flex: 1;
+            margin-right: 0.5rem
+        }
+    }
+}

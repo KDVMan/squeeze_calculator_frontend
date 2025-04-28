@@ -1,0 +1,21 @@
+.icon {
+    &.sort {
+        width: 0.4rem;
+    }
+    
+    &:not(.sort) {
+        fill: #8d8d8d;
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            fill: var(--blue-01);
+        }
+
+        &.disabled {
+            fill: #cbcbcb;
+            cursor: default;
+        }
+    }
+}

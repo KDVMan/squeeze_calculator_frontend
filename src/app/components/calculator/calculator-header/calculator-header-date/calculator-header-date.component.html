@@ -1,0 +1,16 @@
+<div [formGroup]="formGroup" class="date" [owlDateTimeTrigger]="datetime" (auxclick)="onClick($event)">
+	<owl-date-time
+		#datetime
+		[pickerType]="'both'"
+		[showSecondsTimer]="true"
+		[panelClass]="'datetime-picker'"
+		[firstDayOfWeek]="1">
+	</owl-date-time>
+
+	<input type="text"
+		   formControlName="date"
+		   [owlDateTime]="datetime"
+		   [selectMode]="'range'"
+		   [rangeSeparator]="'→'"
+		   [readonly]="true">
+</div>

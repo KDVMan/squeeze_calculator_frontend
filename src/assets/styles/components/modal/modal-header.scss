@@ -1,0 +1,22 @@
+.modal-header {
+    font-size: 1rem;
+    border-bottom: 0.1rem solid var(--component-border);
+    padding: 0.5rem 0 0.5rem 1rem;
+
+    > .modal-title {
+        width: 100%;
+    }
+
+    .close {
+        width: 1.3rem;
+        height: 1.3rem;
+        padding: 0.3rem;
+        margin-right: 0.7rem;
+        cursor: pointer;
+
+        &:hover {
+            fill: #fff;
+            background: var(--blue-01);
+        }
+    }
+}

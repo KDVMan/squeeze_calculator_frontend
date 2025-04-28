@@ -1,0 +1,48 @@
+<app-loading-percent *ngIf="progress?.status === statusEnum.progress" [value]="progress.count" [valueMax]="progress.total" [text]="'Рассчет'"/>
+<app-loading-percent *ngIf="progress?.status === statusEnum.error" [failed]="true"></app-loading-percent>
+<app-loading-spinner *ngIf="loaded === false"></app-loading-spinner>
+
+<table>
+    <tr>
+        <th *ngFor="let sortField of sortFields">
+            <div *ngIf="sortField.sortable" (click)="onSort(sortField.value)">
+                <span>
+                    {{ sortField.name }}
+                </span>
+
+                <ng-container *ngIf="sortField.value | sortIcon:sortColumn:sortDirection as sort">
+                    <svg-icon [name]="sort.name" svgClass="icon sort" [svgStyle]="{'fill': sort.color, 'width.rem': sort.size}"></svg-icon>
+                </ng-container>
+            </div>
+
+            <div *ngIf="!sortField.sortable">
+                 <span>
+                    {{ sortField.name }}
+                </span>
+            </div>
+        </th>
+    </tr>
+
+    <tr *ngFor="let result of results; let i = index" (click)="onClick(i)" [class.selected]="i === selectedIndex">
+        <td>{{ result.param.bind }}</td>
+        <td>{{ result.param.percentIn }}</td>
+        <td>{{ result.param.percentOut }}</td>
+        <td>{{ result.param.stopTime > 0 ? result.param.stopTime / 60 / 1000 : '-' }}</td>
+        <td>{{ result.param.stopPercent > 0 ? result.param.stopPercent : '-' }}</td>
+        <td>{{ result.total }}</td>
+        <td>{{ result.totalStops }}</td>
+        <td>{{ result.totalStopsMinus }}</td>
+        <td>{{ result.totalStopsPlus }}</td>
+        <td>{{ result.totalTakes }}</td>
+        <td>{{ result.totalTakesPlus }}</td>
+        <td>{{ result.totalProfitPercent | formatNumber:2:false }}%</td>
+        <td>{{ result.totalCumulativeProfitPercent | formatNumber:2:false }}%</td>
+        <td>{{ result.maxDrawdownPercent | formatNumber:2:false }}%</td>
+        <td>{{ result.maxTimeDeal | formatNumber:0:false }}</td>
+        <td>{{ result.inOutRatio | formatNumber:2:false }}</td>
+        <td>{{ result.coefficient | formatNumber:2:false }}</td>
+        <td>{{ result.winRate | formatNumber:2:false }}</td>
+        <td>{{ result.winRatePlus | formatNumber:2:false }}</td>
+        <td>{{ result.score | formatNumber:5:false }}</td>
+    </tr>
+</table>

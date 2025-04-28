@@ -1,0 +1,17 @@
+<table [formGroup]="formGroup">
+	<tr>
+		<td>Размер шрифта</td>
+
+		<td>
+			<app-form-input-number [name]="'fontSize'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Цвет фона</td>
+
+		<td>
+			<app-form-input-color [name]="'backgroundColor'" [width]="2"></app-form-input-color>
+		</td>
+	</tr>
+</table>

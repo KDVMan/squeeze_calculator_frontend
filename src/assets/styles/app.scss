@@ -1,0 +1,28 @@
+// variables
+@use 'variables' as *;
+
+// стили
+@use 'main' as *;
+@use 'components/scrollbar' as *;
+@use 'components/form' as *;
+@use 'components/btn' as *;
+@use 'components/dropdown' as *;
+@use 'components/icon' as *;
+@use 'components/toastr' as *;
+@use 'components/modal' as *;
+@use 'components/nav' as *;
+@use 'components/datetime-picker' as *;
+@use 'components/calculator' as *;
+
+/*
+//@import 'components/progress';
+ */
+
+// bootstrap
+@use 'bootstrap/scss/bootstrap' as *;
+
+// модули
+@use '@danielmoncada/angular-datetime-picker/assets/style/picker.min.css' as *;
+
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');

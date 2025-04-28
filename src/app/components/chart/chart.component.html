@@ -1,0 +1,14 @@
+<app-loading-spinner *ngIf="loaded == false"></app-loading-spinner>
+
+<app-chart-panel/>
+
+<div class="chart">
+	<canvas (dblclick)="mouseEvent('dblclick', $event)"
+			(mousedown)="mouseEvent('mousedown', $event)"
+			(mouseup)="mouseEvent('mouseup', $event)"
+			(mousemove)="mouseEvent('mousemove', $event)"
+			(mouseleave)="mouseEvent('mouseleave', $event)"
+			(contextmenu)="mouseEvent('contextmenu', $event)"
+			(wheel)="mouseEvent('wheel', $event)">
+	</canvas>
+</div>

@@ -1,0 +1,18 @@
+<div class="field">
+    <label>Пресет</label>
+    <app-calculator-formula-left-preset/>
+</div>
+
+<div class="field">
+    <label>Фильтр</label>
+    <app-calculator-formula-left-filter/>
+</div>
+
+<div class="field">
+    <label>Формула</label>
+    <app-calculator-formula-left-formula/>
+</div>
+
+<div class="field">
+    <button class="btn btn-save" [disabled]="disableButton" (click)="onClick()">Сохранить</button>
+</div>

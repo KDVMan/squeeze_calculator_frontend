@@ -1,0 +1,19 @@
+<app-loading-spinner *ngIf="loaded === false"></app-loading-spinner>
+
+<app-symbol-list-panel/>
+<app-symbol-list-sort/>
+
+<div class="symbols">
+    <div class="symbol" *ngFor="let symbol of symbols$ | async; trackBy: trackBySymbol" (click)="onClick(symbol.symbol)" [class.active]="symbol.symbol === symbolActive">
+        <div class="left">
+            <div>{{ symbol.symbol }}</div>
+            <div>{{ symbol.statistic.volume | formatNumber:0 }}</div>
+            <div>{{ symbol.statistic.trades | formatNumber:0 }}</div>
+        </div>
+
+        <div class="right" [ngClass]="{'up': symbol.statistic.pricePercent > 0, 'down': symbol.statistic.pricePercent < 0}">
+            <div>{{ symbol.statistic.price | formatNumber:symbol.precision }}</div>
+            <div>{{ symbol.statistic.pricePercent | formatNumber:2:false }}%</div>
+        </div>
+    </div>
+</div>

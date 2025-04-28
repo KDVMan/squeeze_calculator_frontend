@@ -1,0 +1,18 @@
+<table [formGroup]="formGroup">
+	<tr>
+		<td>Скорость колесика (увеличение)</td>
+
+		<td>
+			<app-form-input-number [name]="'wheelSpeedUp'" [width]="3" [maxLength]="3" [addString]="'%'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Скорость колесика (уменьшение)</td>
+
+		<td>
+			<app-form-input-number [name]="'wheelSpeedDown'" [width]="3" [maxLength]="3" [addString]="'%'"></app-form-input-number>
+		</td>
+	</tr>
+
+</table>

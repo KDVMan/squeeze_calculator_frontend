@@ -1,0 +1,93 @@
+<table [formGroup]="formGroup">
+	<tr>
+		<td>Горизонтальный отступ</td>
+
+		<td>
+			<app-form-input-number [name]="'horizontalPadding'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Вертикальный отступ</td>
+
+		<td>
+			<app-form-input-number [name]="'verticalPadding'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Горизонтальный интервал</td>
+
+		<td>
+			<app-form-input-number [name]="'horizontalSpacing'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Вертикальный интервал</td>
+
+		<td>
+			<app-form-input-number [name]="'verticalSpacing'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Отступ от имени</td>
+
+		<td>
+			<app-form-input-number [name]="'nameSpacing'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<tr>
+		<th colspan="2">
+			<span>Начальные значения</span>
+		</th>
+	</tr>
+
+	<tbody [formGroupName]="position.name" *ngFor="let position of positions">
+	<tr formGroupName="none">
+		<td>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" formControlName="active">
+					{{ position.title }}
+				</label>
+			</div>
+		</td>
+
+		<td>
+			<div class="group">
+				<app-form-input-color [name]="'color'" [width]="2"/>
+			</div>
+		</td>
+	</tr>
+	</tbody>
+
+	<ng-container *ngFor="let direction of directions">
+		<tr>
+			<th colspan="2">
+				<span>{{ direction.title }}</span>
+			</th>
+		</tr>
+
+		<tbody [formGroupName]="field.name" *ngFor="let field of fields">
+		<tr [formGroupName]="direction.name" *ngIf="field.name !== 'positionName'">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						{{ field.title }}
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"/>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</ng-container>
+</table>

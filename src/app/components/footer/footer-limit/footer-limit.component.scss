@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.field {
+    margin-left: 5rem;
+
+    > span {
+        display: block;
+        color: var(--gray-04);
+        margin-bottom: 0.2rem;
+    }
+
+    > div {
+        display: flex;
+        align-items: center;
+
+        > span {
+            &:first-child {
+                &:after {
+                    content: '/';
+                    margin: 0 0.2rem 0 0.3rem;
+                    color: var(--gray-04);
+                }
+            }
+        }
+    }
+}

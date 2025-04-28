@@ -1,0 +1,76 @@
+:host {
+    //position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--component-background);
+    border: 0.1rem solid var(--component-border);
+    border-radius: 0.1rem;
+    height: 100%;
+}
+
+.nav {
+    border-bottom: 0.1rem solid var(--gray-02);
+    width: 100%;
+    padding: 0;
+
+    > .nav-item {
+        > .nav-link {
+            &.active {
+                color: #fff;
+                background: var(--gray-04);
+            }
+        }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem 0 auto;
+
+        > .pages {
+            display: flex;
+            align-items: center;
+
+            > .total {
+                padding-right: 1rem;
+                margin-right: 1rem;
+                border-right: 0.1rem solid var(--gray-04);
+            }
+        }
+
+        ngb-pagination {
+            margin-right: 1rem;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            margin-top: 0.1rem;
+
+            > .bi {
+                font-size: 1.3rem;
+                color: var(--gray-04);
+
+                &.bi-toggle-on,
+                &.bi-toggle-off {
+                    font-size: 1.5rem;
+                }
+
+                &.bi-toggle-on {
+                    color: var(--blue-01);
+                }
+
+                &:hover {
+                    color: var(--blue-01-hover);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    position: relative;
+    height: 100%;
+    overflow: auto;
+}

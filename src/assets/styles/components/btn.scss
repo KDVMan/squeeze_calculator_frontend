@@ -1,0 +1,31 @@
+.btn {
+    all: unset;
+    border: none;
+    height: 2rem;
+}
+
+.btn-icon {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+
+    svg-icon {
+        fill: var(--gray-07);
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            fill: var(--blue-01);
+        }
+    }
+
+    &:disabled {
+        svg-icon {
+            fill: var(--gray-01);
+            cursor: default;
+        }
+    }
+}

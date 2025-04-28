@@ -1,0 +1,68 @@
+<table [formGroup]="formGroup">
+	<ng-container *ngFor="let direction of directions">
+		<tr>
+			<th colspan="2">
+				<span>{{ direction.title }}</span>
+			</th>
+		</tr>
+
+		<tbody formGroupName="line">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Линия
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-select [name]="'lineType'" [width]="6" [items]="lines" class="me-2"></app-form-select>
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="body">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись (фон)
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="text">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись (текст)
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</ng-container>
+</table>

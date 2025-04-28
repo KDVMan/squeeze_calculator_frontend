@@ -1,0 +1,33 @@
+@use 'modal/modal-header' as *;
+@use 'modal/modal-body' as *;
+@use 'modal/modal-footer' as *;
+@use 'modal/modal-form' as *;
+@use 'modal/modal-table' as *;
+@use 'modal/modal-error' as *;
+
+.custom-modal,
+.custom-modal-40,
+.custom-modal-45 {
+    min-width: 37rem;
+
+    .modal-content {
+        background-color: #F2F4F7;
+        border: 0.1rem solid var(--component-border);
+        border-radius: 0.2rem;
+        height: 40rem;
+    }
+
+    &.modal-height-auto {
+        .modal-content {
+            height: auto;
+        }
+    }
+}
+
+.custom-modal-40 {
+    --bs-modal-width: 40rem;
+}
+
+.custom-modal-45 {
+    --bs-modal-width: 45rem;
+}

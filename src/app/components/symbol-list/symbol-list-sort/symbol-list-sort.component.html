@@ -1,0 +1,7 @@
+<div *ngFor="let sortField of sortFields" (click)="onSort(sortField.value)">
+	{{ sortField.name }}
+
+	<ng-container *ngIf="sortField.value | sortIcon:sortColumn:sortDirection as sort">
+		<svg-icon [name]="sort.name" svgClass="icon sort" [svgStyle]="{'fill': sort.color, 'width.rem': sort.size}"></svg-icon>
+	</ng-container>
+</div>

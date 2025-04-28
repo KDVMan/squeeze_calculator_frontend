@@ -1,0 +1,37 @@
+.confirm-dialog {
+    display: block;
+    z-index: 999999;
+
+    &.fade {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content {
+        background-color: #F2F4F7;
+        border: 0.1rem solid #cbcbcb;
+        border-radius: 0.1rem;
+    }
+
+    .modal-footer {
+        border-top: 0.1rem solid #cbcbcb;
+        padding: 0.5rem 1rem;
+
+        .btn-yes {
+            color: #fff;
+            background: var(--green-01);
+
+            &:hover {
+                background: var(--green-03);
+            }
+        }
+
+        .btn-no {
+            color: #000;
+
+            &:hover {
+                color: #fff;
+                background: var(--red-01);
+            }
+        }
+    }
+}

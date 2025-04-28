@@ -1,0 +1,89 @@
+<table [formGroup]="formGroup">
+	<tr>
+		<td>Свечей на экране</td>
+
+		<td>
+			<div class="group">
+				<app-form-input-number [name]="'minOnScreen'" [width]="4" [tooltip]="'Минимум'" class="me-2"></app-form-input-number>
+				<app-form-input-number [name]="'maxOnScreen'" [width]="4" [tooltip]="'Максимум'"></app-form-input-number>
+			</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Расстояние между свечами</td>
+
+		<td>
+			<app-form-input-number [name]="'gapSize'" [width]="2" [maxLength]="2" [align]="'center'"></app-form-input-number>
+		</td>
+	</tr>
+
+	<ng-container *ngFor="let direction of directions">
+		<tr>
+			<th colspan="2">
+				<span>{{ direction.title }}</span>
+			</th>
+		</tr>
+
+		<tbody formGroupName="stick">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Фитиль
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="border">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Контур
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'" class="me-2"></app-form-input-number>
+					<app-form-input-number [name]="'minWidth'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Минимальная ширина свечи для отрисовки контура'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="body">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Тело
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'minWidth'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Минимальная ширина свечи для отрисовки тела'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</ng-container>
+</table>

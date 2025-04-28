@@ -1,0 +1,227 @@
+<table [formGroup]="formGroup">
+	<tr formGroupName="information">
+		<td>Горизонтальный отступ</td>
+
+		<td>
+			<app-form-input-number [name]="'horizontalPadding'" [width]="3" [align]="'center'"/>
+		</td>
+	</tr>
+
+	<tr formGroupName="information">
+		<td>Вертикальный отступ</td>
+
+		<td>
+			<app-form-input-number [name]="'verticalPadding'" [width]="3" [align]="'center'"/>
+		</td>
+	</tr>
+
+	<tr formGroupName="information">
+		<td>Отступ</td>
+
+		<td>
+			<app-form-input-number [name]="'indent'" [width]="3" [maxLength]="3" [align]="'center'"/>
+		</td>
+	</tr>
+
+	<ng-container *ngFor="let direction of directions">
+		<tr>
+			<th colspan="2">
+				<span>{{ direction.title }}</span>
+			</th>
+		</tr>
+
+		<tbody formGroupName="body">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Фон
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="information">
+		<tr formGroupName="body">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Информация (фон)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="information">
+		<tr formGroupName="text">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Информация (текст)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="arrow">
+		<tr [formGroupName]="direction.name">
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Стрелка
+					</label>
+				</div>
+			</td>
+
+			<td>
+				<div class="group">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="line">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="horizontal">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по горизонтали (линия)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="horizontal">
+					<app-form-select [name]="'lineType'" [width]="6" [items]="lines" class="me-2"></app-form-select>
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="line">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="vertical">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по вертикали (линия)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="vertical">
+					<app-form-select [name]="'lineType'" [width]="6" [items]="lines" class="me-2"></app-form-select>
+					<app-form-input-color [name]="'color'" [width]="2" class="me-2"></app-form-input-color>
+					<app-form-input-number [name]="'thickness'" [width]="2" [maxLength]="2" [align]="'center'" [tooltip]="'Толщина'"></app-form-input-number>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="body">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="right">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по горизонтали (фон)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="right">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="body">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="bottom">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по вертикали (фон)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="bottom">
+					<app-form-input-color [name]="'color'" [width]="2"></app-form-input-color>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="text">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="right">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по горизонтали (текст)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="right">
+					<app-form-input-color [name]="'color'" [width]="2"/>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+
+		<tbody formGroupName="caption">
+		<tr formGroupName="text">
+			<td [formGroupName]="direction.name">
+				<div class="checkbox" formGroupName="bottom">
+					<label>
+						<input type="checkbox" formControlName="active">
+						Подпись по вертикали (текст)
+					</label>
+				</div>
+			</td>
+
+			<td [formGroupName]="direction.name">
+				<div class="group" formGroupName="bottom">
+					<app-form-input-color [name]="'color'" [width]="2"/>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</ng-container>
+</table>

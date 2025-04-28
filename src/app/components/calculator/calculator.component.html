@@ -1,0 +1,32 @@
+<app-loading-percent *ngIf="progress?.status === statusEnum.progress" [value]="progress.count" [valueMax]="progress.total" [text]="'Рассчет'"/>
+<app-loading-percent *ngIf="progress?.status === statusEnum.error" [failed]="true"></app-loading-percent>
+
+<app-calculator-header [formGroup]="formGroup"/>
+
+<div class="row g-0 h-100">
+	<div class="col-4">
+		<div class="row g-0 h-100">
+			<div class="col">
+				<app-calculator-param-left [formGroup]="formGroup"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-8 h-100">
+		<app-calculator-param-right [formGroup]="formGroup"/>
+	</div>
+</div>
+
+<div class="row g-0 h-100">
+	<div class="col-4 border-top">
+		<div class="row g-0 h-100">
+			<div class="col">
+				<app-calculator-formula-left/>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-8 h-100">
+		<app-calculator-formula-right/>
+	</div>
+</div>

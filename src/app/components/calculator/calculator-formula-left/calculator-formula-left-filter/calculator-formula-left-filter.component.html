@@ -1,0 +1,7 @@
+<div class="calculator-panel" [formGroup]="formGroup">
+    <app-form-select [name]="'filter'" [enabled]="selectEnable" [allowChanged]="true" [items]="items" [container]="null" (selectEvent)="onSelect($event)"/>
+
+    <button class="btn-icon" [disabled]="!buttonEnable" (click)="onAdd()">
+        <svg-icon name="add-right"></svg-icon>
+    </button>
+</div>

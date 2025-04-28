@@ -1,0 +1,24 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--component-background);
+    border: 0.1rem solid var(--component-border);
+    border-radius: 0.2rem;
+    height: 100%;
+}
+
+.chart {
+    position: relative;
+    height: 100%;
+    user-select: none;
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        image-rendering: pixelated;
+    }
+}
+
+

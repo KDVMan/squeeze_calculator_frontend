@@ -1,0 +1,32 @@
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-size-base: 0.875rem;
+$line-height-base: 1.6;
+$transition-collapse: height 0.1s ease;
+$transition-collapse-width: width 0.1s ease;
+
+:root {
+    // main
+    --text-color: #000;
+
+    // component
+    --component-background: #fff;
+    --component-border: #cbcbcb;
+
+    // colors
+    --green-01: #00bf70;
+    --green-02: #00a203;
+    --green-03: #00af6c;
+    --blue-01: #2a95ff;
+    --blue-02: #2688e8;
+    --blue-03: #004d9d;
+    --red-01: #ff524f;
+    --red-02: #d90400;
+    --red-03: #d74542;
+    --gray-01: #cbcbcb;
+    --gray-02: #eaeaea;
+    --gray-03: #dcdcdc;
+    --gray-04: #9f9f9f;
+    --gray-05: #efefef;
+    --gray-06: #7f7f7f;
+    --gray-07: #8d8d8d;
+}

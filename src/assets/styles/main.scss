@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #F2F4F7;
+    color: #000;
+}
+
+.container,
+.container-fluid {
+    padding: 0;
+}
+
+.col-1-5 {
+    flex: 0 0 auto;
+    width: 12.49995%;
+}
+
+.col-3-5 {
+    flex: 0 0 auto !important;
+    width: 29.16665% !important;
+}
+
+.col-8-5 {
+    flex: 0 0 auto;
+    width: 70.83335%;
+}
+
+.h-80 {
+    height: 80%;
+}
+
+.h-70 {
+    height: 70%;
+}
+
+.h-30 {
+    height: 30%;
+}
+
+.h-20 {
+    height: 20%;
+}

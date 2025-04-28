@@ -1,0 +1,100 @@
+<svg-icon name="settings" svgClass="icon" (click)="onOpen(content)"></svg-icon>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <div class="modal-title">Настройки графика</div>
+        <svg-icon name="close" svgClass="close" (click)="onCancel(modal)"></svg-icon>
+    </div>
+
+    <div class="modal-body vertical">
+        <form ngbNav #nav="ngbNav" [(activeId)]="active" [animation]="false" class="vertical">
+            <div ngbNavItem="common">
+                <a ngbNavLink>Общее</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-common/>
+                </ng-template>
+            </div>
+
+            <div ngbNavItem="mouse">
+                <a ngbNavLink>Мышь</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-mouse/>
+                </ng-template>
+            </div>
+
+            <div ngbNavItem="grid">
+                <a ngbNavLink>Сетка</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-grid/>
+                </ng-template>
+            </div>
+
+            <div ngbNavItem="candle">
+                <a ngbNavLink>Свечи</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-candle/>
+                </ng-template>
+            </div>
+
+            <div ngbNavItem="volume">
+                <a ngbNavLink>Объем</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-volume/>
+                </ng-template>
+            </div>
+
+            <div ngbNavItem="legend">
+                <a ngbNavLink>Легенда</a>
+
+                <ng-template ngbNavContent>
+                    <app-chart-settings-legend/>
+                </ng-template>
+            </div>
+
+                        <div ngbNavItem="currentPrice">
+                            <a ngbNavLink>Текущая цена</a>
+
+                            <ng-template ngbNavContent>
+                                <app-chart-settings-current-price/>
+                            </ng-template>
+                        </div>
+
+                        <div ngbNavItem="aim">
+                            <a ngbNavLink>Курсор</a>
+
+                            <ng-template ngbNavContent>
+                                <app-chart-settings-aim/>
+                            </ng-template>
+                        </div>
+
+                        <div ngbNavItem="ruler">
+                            <a ngbNavLink>Линейка</a>
+
+                            <ng-template ngbNavContent>
+                                <app-chart-settings-ruler/>
+                            </ng-template>
+                        </div>
+
+                        <div ngbNavItem="information">
+                            <a ngbNavLink>Информация</a>
+
+                            <ng-template ngbNavContent>
+                                <app-chart-settings-information/>
+                            </ng-template>
+                        </div>
+        </form>
+
+        <div [ngbNavOutlet]="nav" class="modal-form"></div>
+    </div>
+
+    <div class="modal-footer">
+        <svg-icon name="reset" svgClass="reset" (click)="onReset()" [ngbTooltip]="'Сбросить все настройки графика по умолчанию'" [openDelay]="300"></svg-icon>
+        <button type="button" class="btn btn-cancel" (click)="onCancel(modal)">Отмена</button>
+        <button type="button" class="btn btn-save" (click)="onSave(modal)">Сохранить</button>
+    </div>
+</ng-template>

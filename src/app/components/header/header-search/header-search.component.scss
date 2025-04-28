@@ -1,0 +1,48 @@
+form {
+    > input {
+        background: #323a42;
+        color: #2688e8;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 0.125rem 0.5rem;
+        margin-left: 3rem;
+        width: 12rem;
+        border-color: #323a42;
+        border-radius: 0.1rem;
+
+        &:focus,
+        &:hover {
+            background: #fff;
+            color: #000;
+            outline: none;
+        }
+    }
+}
+
+ul {
+    position: absolute;
+    z-index: 999;
+    width: 15rem;
+    max-height: 20rem;
+    background: #323a42;
+    border-radius: 0 0 0.2rem 0.2rem;
+    margin: 0 0 0 3rem;
+    padding: 0;
+    overflow: auto;
+
+    > li {
+        list-style-type: none;
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+            background: #2688e8;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+}

@@ -1,0 +1,99 @@
+.calculator {
+    padding: 0.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.2rem;
+        color: var(--gray-06);
+    }
+
+    input[type="checkbox"] {
+        &.toggle {
+            display: block;
+            margin-top: 2.2rem;
+        }
+    }
+
+    select[multiple] {
+        width: 100%;
+        height: 11.07rem;
+        overflow: hidden;
+
+        option {
+            padding: 0.38rem 0.5rem;
+        }
+    }
+}
+
+.calculator-panel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    > app-form-select {
+        flex: 1;
+        margin-right: 0.5rem;
+    }
+
+    .btn-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-bottom: 0.2rem;
+    }
+
+    svg-icon {
+        &.delete {
+            fill: var(--red-01);
+
+            &:hover {
+                fill: var(--red-03);
+            }
+        }
+    }
+}
+
+.calculator-formula-right {
+    > .title {
+        background: var(--gray-02);
+        color: var(--gray-06);
+        padding: 0.3rem 0.5rem;
+        text-align: center;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        background: #f4f4f4;
+        padding: 0.5rem;
+        right: auto;
+
+        > .header {
+            display: flex;
+            justify-content: space-between;
+
+            .icon {
+                fill: var(--gray-01);
+
+                &:hover {
+                    fill: var(--red-01);
+                }
+            }
+
+            > label {
+                color: var(--gray-06);
+                width: 100%;
+                margin-bottom: 0.2rem;
+            }
+        }
+
+        > .inputs {
+            display: flex;
+
+            > app-form-select {
+                width: 20%;
+                margin-right: 0.5rem
+            }
+        }
+    }
+}
+
