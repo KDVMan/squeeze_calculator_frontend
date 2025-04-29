@@ -1,12 +1,16 @@
 export class CalculatorFormulaPresetAddRequestModel {
-    name: string;
+	name: string;
 }
 
 export class CalculatorFormulaPresetEditRequestModel {
-    id: number;
-    name: string;
+	id: number;
+	name: string;
+}
+
+export class CalculatorFormulaPresetDuplicateRequestModel {
+	id: number;
 }
 
 export interface CalculatorFormulaPresetDeleteRequestModel {
-    id: number;
+	id: number;
 }

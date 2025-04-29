@@ -10,7 +10,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingPercentComponent } from '@core/components/loading-percent/loading-percent.component';
 import { ProgressModel } from '@core/models/progress.model';
 import { WebsocketStatusEnum } from '@core/enums/websocket-status.enum';
-import { dateRangeValidator } from '@core/validators/date-range.validator';
 import { lesserThanValidator } from '@core/validators/lesser-than.validator';
 import { greaterThanValidator } from '@core/validators/greater-than.validator';
 import { greaterThanZeroValidator } from '@core/validators/greated-than-zero.validator';
@@ -19,6 +18,7 @@ import { CalculatorParamLeftComponent } from '@app/components/calculator/calcula
 import { CalculatorParamRightComponent } from '@app/components/calculator/calculator-param-right/calculator-param-right.component';
 import { CalculatorPanelComponent } from '@app/components/calculator/calculator-formula-left/calculator-formula-left.component';
 import { CalculatorTemplateComponent } from '@app/components/calculator/calculator-formula-right/calculator-formula-right.component';
+import { leastOneCheckedValidator } from '@core/validators/least-one-field.validator';
 
 @Component({
 	selector: 'app-calculator',
@@ -69,15 +69,15 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 		];
 
 		this.formGroup = this.formBuilder.group({
-			date: ['', [Validators.required, dateRangeValidator()]],
+			date: ['', [Validators.required]],
 			window: ['', [Validators.required, greaterThanZeroValidator()]],
 			tradeDirection: ['', Validators.required],
 			interval: ['', Validators.required],
 			bind: ['', Validators.required],
-			percentInFrom: ['', [Validators.required, lesserThanValidator('percentInTo')]],
+			percentInFrom: ['', [Validators.required, greaterThanZeroValidator(), lesserThanValidator('percentInTo')]],
 			percentInTo: ['', [Validators.required, greaterThanValidator('percentInFrom')]],
 			percentInStep: ['', Validators.required],
-			percentOutFrom: ['', [Validators.required, lesserThanValidator('percentOutTo')]],
+			percentOutFrom: ['', [Validators.required, greaterThanZeroValidator(), lesserThanValidator('percentOutTo')]],
 			percentOutTo: ['', [Validators.required, greaterThanValidator('percentOutFrom')]],
 			percentOutStep: ['', Validators.required],
 			stopTime: ['', Validators.required],
@@ -90,6 +90,8 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 			stopPercentStep: ['', Validators.required],
 			algorithm: ['', Validators.required],
 			iterations: ['', [Validators.required, greaterThanZeroValidator()]]
+		}, {
+			validators: [leastOneCheckedValidator(['stopTime', 'stopPercent'])]
 		});
 
 		pairs.forEach(pair => {

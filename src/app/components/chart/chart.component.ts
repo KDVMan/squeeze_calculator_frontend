@@ -17,6 +17,7 @@ import { WebsocketEventEnum } from '@core/enums/websocket-event.enum';
 import { WebsocketService } from '@core/services/websocket.service';
 import { QuoteModel } from '@app/models/quote/quote.model';
 import { ChartPanelComponent } from '@app/components/chart/chart-panel/chart-panel.component';
+import { CalculateService } from '@app/services/calculate/calculate.service';
 
 @Component({
 	selector: 'app-chart',
@@ -30,7 +31,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 	private readonly initService = inject(InitService);
 	private readonly chartSettingsService = inject(ChartSettingsService);
 	private readonly quoteService = inject(QuoteService);
-	// private readonly calculateService = inject(CalculateService);
+	private readonly calculateService = inject(CalculateService);
 	private readonly websocketService = inject(WebsocketService);
 	private subscriptionInit: Subscription;
 	private subscriptionChartSettings: Subscription;
@@ -57,10 +58,10 @@ export class ChartComponent implements OnInit, OnDestroy {
 			this.chart.updateSettings(response, true);
 		});
 
-		// this.subscriptionCalculate = this.calculateService.updateSubject.subscribe((index: number) => {
-		// 	this.loaded = false;
-		// 	this.loadQuotes(0, QuoteTypeEnum.calculate, index);
-		// });
+		this.subscriptionCalculate = this.calculateService.updateSubject.subscribe((index: number) => {
+			this.loaded = false;
+			this.loadQuotes(0, QuoteTypeEnum.calculate, index);
+		});
 
 		this.subscriptionChart = this.chart.loadSubject.subscribe((time: number) => {
 			this.loadMoreQuotes(time);

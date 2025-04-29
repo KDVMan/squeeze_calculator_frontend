@@ -7,86 +7,96 @@ import { CalculatorFormulaPresetModel } from '@app/models/calculator-formula-pre
 import {
     CalculatorFormulaPresetAddRequestModel,
     CalculatorFormulaPresetDeleteRequestModel,
+    CalculatorFormulaPresetDuplicateRequestModel,
     CalculatorFormulaPresetEditRequestModel
 } from '@app/models/calculator-formula-preset/calculator-formula-request.model';
 import md5 from 'md5';
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class CalculatorFormulaPresetService {
-    public models: CalculatorFormulaPresetModel[];
-    public updateSubject = new BehaviorSubject<CalculatorFormulaPresetModel[]>([]);
-    public selectedSubject = new BehaviorSubject<CalculatorFormulaPresetModel | null>(null);
-    public setSubject = new Subject<CalculatorFormulaPresetModel>;
+	public models: CalculatorFormulaPresetModel[];
+	public updateSubject = new BehaviorSubject<CalculatorFormulaPresetModel[]>([]);
+	public selectedSubject = new BehaviorSubject<CalculatorFormulaPresetModel | null>(null);
+	public setSubject = new Subject<CalculatorFormulaPresetModel>;
 
-    constructor(private readonly httpService: HttpService) {
-    }
+	constructor(private readonly httpService: HttpService) {
+	}
 
-    public init(models: CalculatorFormulaPresetModel[], event: boolean = true): void {
-        this.models = models;
-        if (event) this.updateSubject.next(models);
-    }
+	public init(models: CalculatorFormulaPresetModel[], event: boolean = true): void {
+		this.models = models;
+		if (event) this.updateSubject.next(models);
+	}
 
-    public load(): Observable<CalculatorFormulaPresetModel[]> {
-        return this.httpService.get<CalculatorFormulaPresetModel[]>('calculator_formula_preset/load').pipe(
-            first(),
-            tap((response: CalculatorFormulaPresetModel[]) => {
-                this.init(response || []);
-            }),
-            catchError((error: HttpErrorResponse) => {
-                throw new Error(error.error);
-            })
-        );
-    }
+	public load(): Observable<CalculatorFormulaPresetModel[]> {
+		return this.httpService.get<CalculatorFormulaPresetModel[]>('calculator_formula_preset/load').pipe(
+			first(),
+			tap((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || []);
+			}),
+			catchError((error: HttpErrorResponse) => {
+				throw new Error(error.error);
+			})
+		);
+	}
 
-    public add(request: CalculatorFormulaPresetAddRequestModel): void {
-        this.httpService
-            .post<CalculatorFormulaPresetAddRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/add', request)
-            .pipe(first())
-            .subscribe((response: CalculatorFormulaPresetModel[]) => {
-                this.init(response || [], true);
-            });
-    }
+	public add(request: CalculatorFormulaPresetAddRequestModel): void {
+		this.httpService
+			.post<CalculatorFormulaPresetAddRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/add', request)
+			.pipe(first())
+			.subscribe((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || [], true);
+			});
+	}
 
-    public edit(request: CalculatorFormulaPresetEditRequestModel): void {
-        this.httpService
-            .post<CalculatorFormulaPresetEditRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/edit', request)
-            .pipe(first())
-            .subscribe((response: CalculatorFormulaPresetModel[]) => {
-                this.init(response || [], true);
-            });
-    }
+	public edit(request: CalculatorFormulaPresetEditRequestModel): void {
+		this.httpService
+			.post<CalculatorFormulaPresetEditRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/edit', request)
+			.pipe(first())
+			.subscribe((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || [], true);
+			});
+	}
 
-    public delete(request: CalculatorFormulaPresetDeleteRequestModel): void {
-        this.httpService
-            .post<CalculatorFormulaPresetDeleteRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/delete', request)
-            .pipe(first())
-            .subscribe((response: CalculatorFormulaPresetModel[]) => {
-                this.init(response || [], true);
-            });
-    }
+	public delete(request: CalculatorFormulaPresetDeleteRequestModel): void {
+		this.httpService
+			.post<CalculatorFormulaPresetDeleteRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/delete', request)
+			.pipe(first())
+			.subscribe((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || [], true);
+			});
+	}
 
-    public update(request: CalculatorFormulaPresetModel): void {
-        this.setSubject.next(request);
+	public update(request: CalculatorFormulaPresetModel): void {
+		this.setSubject.next(request);
 
-        this.httpService
-            .post<CalculatorFormulaPresetModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/update', request)
-            .pipe(first())
-            .subscribe((response: CalculatorFormulaPresetModel[]) => {
-                this.init(response || [], true);
-            });
-    }
+		this.httpService
+			.post<CalculatorFormulaPresetModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/update', request)
+			.pipe(first())
+			.subscribe((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || [], true);
+			});
+	}
 
-    public getHash(preset: CalculatorFormulaPresetModel): string {
-        if (!preset) return '';
+	public duplicate(request: CalculatorFormulaPresetDuplicateRequestModel): void {
+		this.httpService
+			.post<CalculatorFormulaPresetDuplicateRequestModel, CalculatorFormulaPresetModel[]>('calculator_formula_preset/duplicate', request)
+			.pipe(first())
+			.subscribe((response: CalculatorFormulaPresetModel[]) => {
+				this.init(response || [], true);
+			});
+	}
 
-        if (!preset.filters) preset.filters = [];
-        if (!preset.formulas) preset.formulas = [];
+	public getHash(preset: CalculatorFormulaPresetModel): string {
+		if (!preset) return '';
 
-        const filters = preset.filters.map(filter => `${filter.name}:${filter.filter || ''}:${filter.value}`).join('|');
-        const formulas = preset.formulas.map(formula => `${formula.name}:${formula.multiplier}`).join('|');
+		if (!preset.filters) preset.filters = [];
+		if (!preset.formulas) preset.formulas = [];
 
-        return md5(`${filters}|${formulas}`);
-    }
+		const filters = preset.filters.map(filter => `${filter.name}:${filter.filter || ''}:${filter.value}`).join('|');
+		const formulas = preset.formulas.map(formula => `${formula.name}:${formula.multiplier}`).join('|');
+
+		return md5(`${filters}|${formulas}`);
+	}
 }

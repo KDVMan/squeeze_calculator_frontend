@@ -1,15 +1,21 @@
 <div class="calculator-panel" [formGroup]="formGroup">
-    <app-form-select [name]="'preset'" [widthMax]="true" [items]="presets" [allowTextInput]="true" [allowChanged]="true" [container]="null" (selectEvent)="onSelect($event)"/>
+	<app-form-select [name]="'preset'" [widthMax]="true" [items]="presets" [allowTextInput]="true" [allowChanged]="true" [container]="null" (selectEvent)="onSelect($event)"/>
 
-    <button class="btn-icon" [disabled]="!buttonAddEnable" (click)="onAdd()" *ngIf="buttonAddShow">
-        <svg-icon name="add"></svg-icon>
-    </button>
+	<button class="btn-icon" *ngIf="isCtrlPressed" (click)="onDuplicate()">
+		<svg-icon name="duplicate"></svg-icon>
+	</button>
 
-    <button class="btn-icon" [disabled]="!buttonEditEnable" (click)="onEdit()" *ngIf="buttonEditShow">
-        <svg-icon name="edit"></svg-icon>
-    </button>
+	<ng-container *ngIf="!isCtrlPressed">
+		<button class="btn-icon" [disabled]="!buttonAddEnable" (click)="onAdd()" *ngIf="buttonAddShow">
+			<svg-icon name="add"></svg-icon>
+		</button>
 
-    <button class="btn-icon" (click)="onDelete()" *ngIf="buttonDeleteShow">
-        <svg-icon name="delete" class="delete"></svg-icon>
-    </button>
+		<button class="btn-icon" [disabled]="!buttonEditEnable" (click)="onEdit()" *ngIf="buttonEditShow">
+			<svg-icon name="edit"></svg-icon>
+		</button>
+
+		<button class="btn-icon" (click)="onDelete()" *ngIf="buttonDeleteShow">
+			<svg-icon name="delete" class="delete"></svg-icon>
+		</button>
+	</ng-container>
 </div>
