@@ -1,0 +1,39 @@
+import { TradeDirectionEnum } from '@core/enums/trade-direction.enum';
+import { IntervalEnum } from '@core/enums/interval.enum';
+import { BindEnum } from '@core/enums/bind.enum';
+import { AlgorithmEnum } from '@core/enums/algorithm.enum';
+import { BotStatusEnum } from '@app/enums/bot/bot-status.enum';
+import { CalculatorFilterModel } from '@app/models/calculator-formula-preset/calculator-filter.model';
+import { CalculatorFormulaModel } from '@app/models/calculator-formula-preset/calculator-formula.model';
+import { BotParamModel } from '@app/models/bot/bot-param.model';
+
+export class BotModel {
+	id: number;
+	calculatorPresetId: number;
+	calculatorFormulaPresetId: number;
+	symbol: string;
+	window: number;
+	tradeDirection: TradeDirectionEnum;
+	interval: IntervalEnum;
+	bind: BindEnum[];
+	percentInFrom: number;
+	percentInTo: number;
+	percentInStep: number;
+	percentOutFrom: number;
+	percentOutTo: number;
+	percentOutStep: number;
+	stopTime: boolean;
+	stopTimeFrom: number;
+	stopTimeTo: number;
+	stopTimeStep: number;
+	stopPercent: boolean;
+	stopPercentFrom: number;
+	stopPercentTo: number;
+	stopPercentStep: number;
+	algorithm: AlgorithmEnum;
+	status: BotStatusEnum;
+	filters: CalculatorFilterModel[];
+	formulas: CalculatorFormulaModel[];
+	param: BotParamModel;
+	apiSend: boolean;
+}

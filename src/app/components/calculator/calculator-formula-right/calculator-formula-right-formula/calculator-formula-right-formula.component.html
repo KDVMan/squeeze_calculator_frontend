@@ -6,7 +6,7 @@
             <div class="field">
                 <div class="header">
                     <label>{{ "filter." + preset.formulas[i].name | translate }}</label>
-                    <svg-icon name="delete" svgClass="icon" (click)="onDelete(i)"/>
+                    <svg-icon name="delete_v1" svgClass="icon" (click)="onDelete(i)"/>
                 </div>
 
                 <app-form-input-number [name]="'multiplier'" [widthMax]="true" [allowSign]="true" [allowDecimal]="true" [delay]="0" (valueChange)="onChange(i, $event)"/>

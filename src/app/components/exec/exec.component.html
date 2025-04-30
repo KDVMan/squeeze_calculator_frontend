@@ -1,9 +1,9 @@
 <div ngbNav #nav="ngbNav" [(activeId)]="active" (activeIdChange)="onTabChange($event)" [animation]="false" class="horizontal">
-	<div ngbNavItem="bot">
-		<a ngbNavLink>Активные</a>
+	<div ngbNavItem="botList">
+		<a ngbNavLink>Боты</a>
 
 		<ng-template ngbNavContent>
-			<!--            <app-trade/>-->
+			<app-bot-list/>
 		</ng-template>
 	</div>
 

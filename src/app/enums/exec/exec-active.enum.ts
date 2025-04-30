@@ -1,4 +1,4 @@
 export enum ExecActiveEnum {
-	bot = 'bot',
+	botList = 'botList',
 	calculate = 'calculate'
 }

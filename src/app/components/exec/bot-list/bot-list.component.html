@@ -1,0 +1,106 @@
+<app-loading-spinner *ngIf="loaded === false"></app-loading-spinner>
+
+<table>
+	<tr>
+		<th *ngFor="let sortField of sortFields">
+			<div *ngIf="sortField.sortable" (click)="onSort(sortField.value)">
+                <span>
+                    {{ sortField.name }}
+                </span>
+
+				<ng-container *ngIf="sortField.value | sortIcon:sortColumn:sortDirection as sort">
+					<svg-icon [name]="sort.name" svgClass="icon sort" [svgStyle]="{'fill': sort.color, 'width.rem': sort.size}"></svg-icon>
+				</ng-container>
+			</div>
+
+			<div *ngIf="!sortField.sortable">
+                 <span>
+                    {{ sortField.name }}
+                </span>
+			</div>
+		</th>
+
+		<th>
+			<svg-icon [name]="toggle$.value ? 'toggle-on' : 'toggle-off'"
+					  [ngbTooltip]="toggle$.value ? 'Показать всех ботов' : 'Показать ботов только для этого символа'"
+					  [openDelay]="1000"
+					  container="body"
+					  (click)="onToggle()"></svg-icon>
+		</th>
+	</tr>
+
+	<tr *ngFor="let result of results" (click)="onClick(result)" [class.selected]="result.id === selectedBotID">
+		<td>{{ result.id }}</td>
+		<td>{{ result.symbol }}</td>
+		<td> {{ ('M002.' + result.interval) | translate }}</td>
+		<td> {{ ('trade-direction.' + result.tradeDirection) | translate | lowercase }}</td>
+		<td>{{ result.window }}</td>
+
+		<!--		<td class="param">-->
+		<!--			<span class="prev" *ngIf="result.prevParam.bind">{{ result.prevParam.bind }}</span>-->
+		<!--			<span class="current">{{ result.currentParam.bind }}</span>-->
+		<!--			<span class="next" *ngIf="result.nextParam.bind">{{ result.nextParam.bind }}</span>-->
+		<!--		</td>-->
+
+		<!--		<td class="param">-->
+		<!--			<span class="prev" *ngIf="result.prevParam.percentIn">{{ result.prevParam.percentIn }}</span>-->
+
+		<!--			<span class="current">-->
+		<!--				{{ result.currentParam.percentIn }}-->
+		<!--				<i *ngIf="result.deal.priceIn">{{ result.deal.priceIn }}</i>-->
+		<!--			</span>-->
+
+		<!--			<span class="next" *ngIf="result.nextParam.percentIn">{{ result.nextParam.percentIn }}</span>-->
+		<!--		</td>-->
+
+		<!--		<td class="param">-->
+		<!--			<span class="prev" *ngIf="result.prevParam.percentOut">{{ result.prevParam.percentOut }}</span>-->
+
+		<!--			<span class="current">-->
+		<!--				{{ result.currentParam.percentOut }}-->
+		<!--				<i *ngIf="result.deal.preparationPriceOut">{{ result.deal.preparationPriceOut }}</i>-->
+		<!--			</span>-->
+
+		<!--			<span class="next" *ngIf="result.nextParam.percentOut">{{ result.nextParam.percentOut }}</span>-->
+		<!--		</td>-->
+
+		<!--		<td class="param">-->
+		<!--			<span class="prev" *ngIf="result.prevParam.stopTime">{{ result.prevParam.stopTime }}</span>-->
+		<!--			<span class="current">{{ result.currentParam.stopTime }}</span>-->
+		<!--			<span class="next" *ngIf="result.nextParam.stopTime">{{ result.nextParam.stopTime }}</span>-->
+		<!--		</td>-->
+
+		<!--		<td class="param">-->
+		<!--			<span class="prev" *ngIf="result.prevParam.stopPercent">{{ result.prevParam.stopPercent }}</span>-->
+		<!--			<span class="current">{{ result.currentParam.stopPercent }}</span>-->
+		<!--			<span class="next" *ngIf="result.nextParam.stopPercent">{{ result.nextParam.stopPercent }}</span>-->
+		<!--		</td>-->
+
+		<!--		<td> {{ result.deposit }}</td>-->
+
+		<td>{{ ('M004.' + result.status) | translate | lowercase }}</td>
+
+		<td class="actions">
+			<svg-icon [name]="'start'" *ngIf="result.status === botStatusEnum.stop" (click)="onStatus(result.id, $event, botStatusEnum.new)"/>
+			<svg-icon [name]="'stop'" *ngIf="result.status === botStatusEnum.new || result.status === botStatusEnum.start" (click)="onStatus(result.id, $event, botStatusEnum.stop)"/>
+			<svg-icon [name]="'delete_v2'" *ngIf="result.status == botStatusEnum.stop" (click)="onStatus(result.id, $event, botStatusEnum.delete)"/>
+		</td>
+	</tr>
+</table>
+
+
+<!--	<div class="right">-->
+<!--        <div class="pages" *ngIf="active === 'archive'">-->
+<!--    			<span class="total">-->
+<!--    				{{ total$ | async }}-->
+<!--    			</span>-->
+
+<!--            <ngb-pagination [collectionSize]="total$ | async"-->
+<!--                            [pageSize]="configService.get('pagination.onPage')"-->
+<!--                            [maxSize]="configService.get('pagination.onNav')"-->
+<!--                            [page]="page$ | async"-->
+<!--                            (pageChange)="onPage($event)"-->
+<!--                            [directionLinks]="false"-->
+<!--                            [rotate]="true">-->
+<!--            </ngb-pagination>-->
+<!--        </div>-->
