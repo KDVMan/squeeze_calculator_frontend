@@ -4,6 +4,8 @@ import { BotStartRequestModel } from '@app/models/bot/bot-start-request.model';
 import { InitService } from '@app/services/init/init.service';
 import { BotService } from '@app/services/bot/bot.service';
 import { first } from 'rxjs';
+import { ActionService } from '@core/services/action.service';
+import { ActionEnum } from '@core/enums/action.enum';
 
 @Component({
 	selector: 'app-calculator-header-start',
@@ -13,6 +15,7 @@ import { first } from 'rxjs';
 })
 export class CalculatorHeaderStartComponent {
 	@Input() formGroup: FormGroup;
+	private readonly actionService = inject(ActionService);
 	private readonly initService = inject(InitService);
 	private readonly botService = inject(BotService);
 
@@ -20,6 +23,10 @@ export class CalculatorHeaderStartComponent {
 		const request: BotStartRequestModel = {
 			symbol: this.initService.model.symbol,
 		};
+
+		this.actionService.update({
+			action: ActionEnum.calculatorStart
+		});
 
 		this.botService.start(request)
 			.pipe(first())

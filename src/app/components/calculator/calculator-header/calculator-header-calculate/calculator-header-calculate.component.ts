@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { first } from 'rxjs';
 import { CalculatorService } from '@app/services/calculator/calculator.service';
 import { CalculateCalculateRequestModel } from '@app/models/calculator/calculator-calculate-request.model';
 import { CalculatorPresetService } from '@app/services/calculator-preset/calculator-preset.service';
 import { InitService } from '@app/services/init/init.service';
+import { ActionService } from '@core/services/action.service';
+import { ActionEnum } from '@core/enums/action.enum';
 
 @Component({
 	selector: 'app-calculator-header-calculate',
@@ -14,11 +16,10 @@ import { InitService } from '@app/services/init/init.service';
 })
 export class CalculatorHeaderCalculateComponent {
 	@Input() formGroup: FormGroup;
-
-	constructor(private readonly initService: InitService,
-				private readonly calculatorService: CalculatorService,
-				private readonly calculatorPresetService: CalculatorPresetService) {
-	}
+	private readonly actionService = inject(ActionService);
+	private readonly initService = inject(InitService);
+	private readonly calculatorService = inject(CalculatorService);
+	private readonly calculatorPresetService = inject(CalculatorPresetService);
 
 	public onClick(): void {
 		const request: CalculateCalculateRequestModel = {
@@ -46,6 +47,10 @@ export class CalculatorHeaderCalculateComponent {
 			algorithm: this.formGroup.get('algorithm').value,
 			iterations: Number(this.formGroup.get('iterations').value)
 		};
+
+		this.actionService.update({
+			action: ActionEnum.calculatorCalculate
+		});
 
 		this.calculatorService.calculate(request)
 			.pipe(first())

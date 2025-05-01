@@ -42,6 +42,7 @@ export class BotListComponent implements OnInit, OnDestroy {
 	public toggle$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public readonly botStatusEnum = BotStatusEnum;
 	public selectedBotID = 0;
+	public currentSymbol: string;
 
 	public sortFields = [
 		{name: '#', value: BotSortEnum.id, sortable: true},
@@ -49,6 +50,11 @@ export class BotListComponent implements OnInit, OnDestroy {
 		{name: 'Интервал', value: BotSortEnum.interval, sortable: true},
 		{name: 'Направление', value: BotSortEnum.tradeDirection, sortable: true},
 		{name: 'Окно', value: BotSortEnum.window, sortable: true},
+		{name: 'Привязка', value: BotSortEnum.bind, sortable: false},
+		{name: 'Вх.', value: BotSortEnum.percentIn, sortable: false},
+		{name: 'Вых.', value: BotSortEnum.percentOut, sortable: false},
+		{name: 'Стоп t', value: BotSortEnum.stopTime, sortable: false},
+		{name: 'Стоп %', value: BotSortEnum.stopPercent, sortable: false},
 		{name: 'Статус', value: BotSortEnum.status, sortable: true},
 	];
 
@@ -57,27 +63,24 @@ export class BotListComponent implements OnInit, OnDestroy {
 		this.page$ = this.paginationService.pageSubject;
 		this.sortColumn = this.initService.model.botSortColumn;
 		this.sortDirection = this.initService.model.botSortDirection;
+		this.currentSymbol = this.initService.model.symbol;
 
 		this.subscriptionInit = this.initService.setSubject.subscribe((response: InitSubjectModel) => {
 			if (response.senders.some(x => x === InitSenderEnum.symbol)) {
+				this.currentSymbol = this.initService.model.symbol;
 				this.loaded = false;
 			}
 		});
 
 		this.subscriptionBotList = this.websocketService.receive<BotModel[]>(WebsocketEventEnum.botList).subscribe(results => {
-			console.log('Bot list: ', results);
-
 			this.results = results;
 			this.loaded = true;
 		});
 
 		this.subscriptionBot = this.websocketService.receive<BotModel>(WebsocketEventEnum.bot).subscribe(result => {
-			console.log('Bot: ', result);
-
 			const index = this.results.findIndex(x => x.id === result.id);
 
 			if (index !== -1) {
-				console.log('FOUND', this.results[index]);
 				this.results[index] = result;
 			}
 		});
@@ -87,6 +90,12 @@ export class BotListComponent implements OnInit, OnDestroy {
 		if (this.subscriptionInit) this.subscriptionInit.unsubscribe();
 		if (this.subscriptionBotList) this.subscriptionBotList.unsubscribe();
 		if (this.subscriptionBot) this.subscriptionBot.unsubscribe();
+	}
+
+	get resultsFiltered(): BotModel[] {
+		return this.toggle$.value
+			? this.results.filter(bot => bot.symbol === this.currentSymbol)
+			: this.results;
 	}
 
 	public onPage(page: number) {
@@ -131,5 +140,7 @@ export class BotListComponent implements OnInit, OnDestroy {
 			symbol: bot.symbol,
 			interval: this.initService.model.intervals.find(i => i.name === bot.interval)
 		}, [InitSenderEnum.symbol, InitSenderEnum.interval, InitSenderEnum.bot]);
+
+		this.currentSymbol = bot.symbol;
 	}
 }

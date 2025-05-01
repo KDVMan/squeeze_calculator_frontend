@@ -1,0 +1,12 @@
+.btn-update {
+    color: #fff;
+    background: var(--blue-01);
+    padding: 0 0.9rem;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #fff;
+        background: var(--blue-02);
+    }
+}

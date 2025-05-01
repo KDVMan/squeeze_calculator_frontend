@@ -29,55 +29,17 @@
 		</th>
 	</tr>
 
-	<tr *ngFor="let result of results" (click)="onClick(result)" [class.selected]="result.id === selectedBotID">
+	<tr *ngFor="let result of resultsFiltered" (click)="onClick(result)" [class.selected]="result.id === selectedBotID">
 		<td>{{ result.id }}</td>
 		<td>{{ result.symbol }}</td>
 		<td> {{ ('M002.' + result.interval) | translate }}</td>
 		<td> {{ ('trade-direction.' + result.tradeDirection) | translate | lowercase }}</td>
 		<td>{{ result.window }}</td>
-
-		<!--		<td class="param">-->
-		<!--			<span class="prev" *ngIf="result.prevParam.bind">{{ result.prevParam.bind }}</span>-->
-		<!--			<span class="current">{{ result.currentParam.bind }}</span>-->
-		<!--			<span class="next" *ngIf="result.nextParam.bind">{{ result.nextParam.bind }}</span>-->
-		<!--		</td>-->
-
-		<!--		<td class="param">-->
-		<!--			<span class="prev" *ngIf="result.prevParam.percentIn">{{ result.prevParam.percentIn }}</span>-->
-
-		<!--			<span class="current">-->
-		<!--				{{ result.currentParam.percentIn }}-->
-		<!--				<i *ngIf="result.deal.priceIn">{{ result.deal.priceIn }}</i>-->
-		<!--			</span>-->
-
-		<!--			<span class="next" *ngIf="result.nextParam.percentIn">{{ result.nextParam.percentIn }}</span>-->
-		<!--		</td>-->
-
-		<!--		<td class="param">-->
-		<!--			<span class="prev" *ngIf="result.prevParam.percentOut">{{ result.prevParam.percentOut }}</span>-->
-
-		<!--			<span class="current">-->
-		<!--				{{ result.currentParam.percentOut }}-->
-		<!--				<i *ngIf="result.deal.preparationPriceOut">{{ result.deal.preparationPriceOut }}</i>-->
-		<!--			</span>-->
-
-		<!--			<span class="next" *ngIf="result.nextParam.percentOut">{{ result.nextParam.percentOut }}</span>-->
-		<!--		</td>-->
-
-		<!--		<td class="param">-->
-		<!--			<span class="prev" *ngIf="result.prevParam.stopTime">{{ result.prevParam.stopTime }}</span>-->
-		<!--			<span class="current">{{ result.currentParam.stopTime }}</span>-->
-		<!--			<span class="next" *ngIf="result.nextParam.stopTime">{{ result.nextParam.stopTime }}</span>-->
-		<!--		</td>-->
-
-		<!--		<td class="param">-->
-		<!--			<span class="prev" *ngIf="result.prevParam.stopPercent">{{ result.prevParam.stopPercent }}</span>-->
-		<!--			<span class="current">{{ result.currentParam.stopPercent }}</span>-->
-		<!--			<span class="next" *ngIf="result.nextParam.stopPercent">{{ result.nextParam.stopPercent }}</span>-->
-		<!--		</td>-->
-
-		<!--		<td> {{ result.deposit }}</td>-->
-
+		<td>{{ result.param.bind }}</td>
+		<td>{{ result.param.percentIn }}</td>
+		<td>{{ result.param.percentOut }}</td>
+		<td>{{ result.param.stopTime > 0 ? result.param.stopTime / 60 / 1000 : '-' }}</td>
+		<td>{{ result.param.stopPercent > 0 ? result.param.stopPercent : '-' }}</td>
 		<td>{{ ('M004.' + result.status) | translate | lowercase }}</td>
 
 		<td class="actions">

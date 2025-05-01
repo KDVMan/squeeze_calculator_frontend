@@ -4,5 +4,10 @@ export enum BotSortEnum {
 	interval = 'interval',
 	tradeDirection = 'tradeDirection',
 	window = 'window',
+	bind = 'bind',
+	percentIn = 'percentIn',
+	percentOut = 'percentOut',
+	stopTime = 'stopTime',
+	stopPercent = 'stopPercent',
 	status = 'status',
 }
