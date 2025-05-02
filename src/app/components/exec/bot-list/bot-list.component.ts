@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbNavModule, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, first, Observable, Subscription } from 'rxjs';
@@ -18,6 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { BotStatusEnum } from '@app/enums/bot/bot-status.enum';
 import { BotService } from '@app/services/bot/bot.service';
 import { BotUpdateStatusRequestModel } from '@app/models/bot/bot-update-status-request.model';
+import { BotParamModel } from '@app/models/bot/bot-param.model';
 
 @Component({
 	selector: 'app-bot-list',
@@ -43,6 +44,8 @@ export class BotListComponent implements OnInit, OnDestroy {
 	public readonly botStatusEnum = BotStatusEnum;
 	public selectedBotID = 0;
 	public currentSymbol: string;
+	private readonly cdr = inject(ChangeDetectorRef);
+	private intervalId: any;
 
 	public sortFields = [
 		{name: '#', value: BotSortEnum.id, sortable: true},
@@ -55,6 +58,7 @@ export class BotListComponent implements OnInit, OnDestroy {
 		{name: 'Вых.', value: BotSortEnum.percentOut, sortable: false},
 		{name: 'Стоп t', value: BotSortEnum.stopTime, sortable: false},
 		{name: 'Стоп %', value: BotSortEnum.stopPercent, sortable: false},
+		{name: 'Обновление', value: BotSortEnum.stopPercent, sortable: false},
 		{name: 'Статус', value: BotSortEnum.status, sortable: true},
 	];
 
@@ -64,6 +68,8 @@ export class BotListComponent implements OnInit, OnDestroy {
 		this.sortColumn = this.initService.model.botSortColumn;
 		this.sortDirection = this.initService.model.botSortDirection;
 		this.currentSymbol = this.initService.model.symbol;
+
+		this.startTimer();
 
 		this.subscriptionInit = this.initService.setSubject.subscribe((response: InitSubjectModel) => {
 			if (response.senders.some(x => x === InitSenderEnum.symbol)) {
@@ -81,15 +87,29 @@ export class BotListComponent implements OnInit, OnDestroy {
 			const index = this.results.findIndex(x => x.id === result.id);
 
 			if (index !== -1) {
+				result.param = Object.assign(new BotParamModel(), result.param);
 				this.results[index] = result;
 			}
 		});
 	}
 
 	public ngOnDestroy(): void {
+		if (this.intervalId) clearInterval(this.intervalId);
 		if (this.subscriptionInit) this.subscriptionInit.unsubscribe();
 		if (this.subscriptionBotList) this.subscriptionBotList.unsubscribe();
 		if (this.subscriptionBot) this.subscriptionBot.unsubscribe();
+	}
+
+	private startTimer(): void {
+		this.intervalId = setInterval(() => {
+			this.results.forEach(bot => {
+				if (bot.param instanceof BotParamModel) {
+					bot.param.updateTimer();
+				}
+			});
+
+			this.cdr.detectChanges();
+		}, 1000);
 	}
 
 	get resultsFiltered(): BotModel[] {

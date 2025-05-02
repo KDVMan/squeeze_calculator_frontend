@@ -40,6 +40,7 @@
 		<td>{{ result.param.percentOut }}</td>
 		<td>{{ result.param.stopTime > 0 ? result.param.stopTime / 60 / 1000 : '-' }}</td>
 		<td>{{ result.param.stopPercent > 0 ? result.param.stopPercent : '-' }}</td>
+		<td>{{ result.param.secondsSinceLastUpdate }}</td>
 		<td>{{ ('M004.' + result.status) | translate | lowercase }}</td>
 
 		<td class="actions">

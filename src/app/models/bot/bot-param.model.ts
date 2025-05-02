@@ -6,4 +6,14 @@ export class BotParamModel {
 	percentOut: number;
 	stopTime: number;
 	stopPercent: number;
+	lastUpdate: number;
+	secondsSinceLastUpdate: number = 0;
+
+	updateTimer(): void {
+		if (!this.lastUpdate) {
+			this.secondsSinceLastUpdate = 0;
+		} else {
+			this.secondsSinceLastUpdate = Math.floor((Date.now() - this.lastUpdate) / 1000);
+		}
+	}
 }

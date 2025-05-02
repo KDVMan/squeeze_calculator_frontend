@@ -8,12 +8,12 @@ import { ActionService } from '@core/services/action.service';
 import { ActionEnum } from '@core/enums/action.enum';
 
 @Component({
-	selector: 'app-calculator-header-start',
-	templateUrl: './calculator-header-start.component.html',
-	styleUrl: './calculator-header-start.component.scss',
+	selector: 'app-calculator-header-start-mass',
+	templateUrl: './calculator-header-start-mass.component.html',
+	styleUrl: './calculator-header-start-mass.component.scss',
 	standalone: true
 })
-export class CalculatorHeaderStartComponent {
+export class CalculatorHeaderStartMassComponent {
 	@Input() formGroup: FormGroup;
 	private readonly actionService = inject(ActionService);
 	private readonly initService = inject(InitService);
@@ -22,7 +22,7 @@ export class CalculatorHeaderStartComponent {
 	public onClick(): void {
 		const request: BotStartRequestModel = {
 			symbol: this.initService.model.symbol,
-			isMass: false
+			isMass: true
 		};
 
 		this.actionService.update({
