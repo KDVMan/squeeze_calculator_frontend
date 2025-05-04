@@ -9,6 +9,6 @@ export enum BotSortEnum {
 	percentOut = 'percentOut',
 	stopTime = 'stopTime',
 	stopPercent = 'stopPercent',
-	lastUpdate = 'lastUpdate',
+	timeUpdate = 'timeUpdate',
 	status = 'status',
 }

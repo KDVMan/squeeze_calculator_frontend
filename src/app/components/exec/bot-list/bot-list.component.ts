@@ -58,7 +58,7 @@ export class BotListComponent implements OnInit, OnDestroy {
 		{name: 'Вых.', value: BotSortEnum.percentOut, sortable: false},
 		{name: 'Стоп t', value: BotSortEnum.stopTime, sortable: false},
 		{name: 'Стоп %', value: BotSortEnum.stopPercent, sortable: false},
-		{name: 'Обновление', value: BotSortEnum.stopPercent, sortable: false},
+		{name: 'Обновление', value: BotSortEnum.timeUpdate, sortable: false},
 		{name: 'Статус', value: BotSortEnum.status, sortable: true},
 	];
 
