@@ -6,6 +6,7 @@ export class BotParamModel {
 	percentOut: number;
 	stopTime: number;
 	stopPercent: number;
+	score: number;
 	lastUpdate: number;
 	secondsSinceLastUpdate: number = 0;
 

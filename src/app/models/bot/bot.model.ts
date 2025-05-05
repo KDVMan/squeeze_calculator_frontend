@@ -34,6 +34,7 @@ export class BotModel {
 	status: BotStatusEnum;
 	filters: CalculatorFilterModel[];
 	formulas: CalculatorFormulaModel[];
+	paramOld: BotParamModel;
 	param: BotParamModel;
 	apiSend: boolean;
 }

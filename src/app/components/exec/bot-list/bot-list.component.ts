@@ -87,6 +87,7 @@ export class BotListComponent implements OnInit, OnDestroy {
 			const index = this.results.findIndex(x => x.id === result.id);
 
 			if (index !== -1) {
+				result.paramOld = Object.assign(new BotParamModel(), result.paramOld);
 				result.param = Object.assign(new BotParamModel(), result.param);
 				this.results[index] = result;
 			}
