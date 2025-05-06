@@ -16,29 +16,18 @@
 	</div>
 
 	<div class="right">
-		<!--        <div class="pages" *ngIf="active === 'archive'">-->
-		<!--    			<span class="total">-->
-		<!--    				{{ total$ | async }}-->
-		<!--    			</span>-->
+		<div class="actions" *ngIf="active === 'botList'">
+			<form [formGroup]="actionFormGroup">
+				<app-form-select [name]="'action'"
+								 [width]="10"
+								 [items]="actions"
+								 [item]="actionFormGroup.get('action').value ? { key: actionFormGroup.get('action').value, value: actionFormGroup.get('action').value } : { key: '', value: '' }"
+								 [addEmpty]="false"
+								 [allowChanged]="true"/>
 
-		<!--            <ngb-pagination [collectionSize]="total$ | async"-->
-		<!--                            [pageSize]="configService.get('pagination.onPage')"-->
-		<!--                            [maxSize]="configService.get('pagination.onNav')"-->
-		<!--                            [page]="page$ | async"-->
-		<!--                            (pageChange)="onPage($event)"-->
-		<!--                            [directionLinks]="false"-->
-		<!--                            [rotate]="true">-->
-		<!--            </ngb-pagination>-->
-		<!--        </div>-->
-
-		<!--        <div class="actions">-->
-		<!--            <i class="bi"-->
-		<!--               [ngClass]="{'bi-toggle-on': toggleStates[active], 'bi-toggle-off': !toggleStates[active]}"-->
-		<!--               [ngbTooltip]="toggleStates[active] ? 'Показать всех ботов' : 'Показать ботов только на этой котировке'"-->
-		<!--               [openDelay]="1000"-->
-		<!--               (click)="onToggle()">-->
-		<!--            </i>-->
-		<!--        </div>-->
+				<button class="btn btn-action" (click)="onAction()" [disabled]="actionFormGroup.invalid">Выполнить</button>
+			</form>
+		</div>
 	</div>
 </div>
 

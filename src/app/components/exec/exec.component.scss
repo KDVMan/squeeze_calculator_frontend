@@ -43,26 +43,23 @@
         }
 
         .actions {
-            display: flex;
-            align-items: center;
-            margin-top: 0.1rem;
+            form {
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
 
-            > .bi {
-                font-size: 1.3rem;
-                color: var(--gray-04);
+            .btn-action {
+                color: #fff;
+                background: var(--blue-01);
+                padding: 0 0.9rem;
+                margin-left: 1rem;
 
-                &.bi-toggle-on,
-                &.bi-toggle-off {
-                    font-size: 1.5rem;
-                }
-
-                &.bi-toggle-on {
-                    color: var(--blue-01);
-                }
-
-                &:hover {
-                    color: var(--blue-01-hover);
-                    cursor: pointer;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: #fff;
+                    background: var(--blue-02);
                 }
             }
         }
