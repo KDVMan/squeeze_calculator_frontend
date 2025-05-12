@@ -8,6 +8,8 @@
 
 ----
 
+https://i.postimg.cc/3NJnbTpJ/Screenshot-1.png
+
 Фронтенд для калькулятора сквизов (squeeze calculator)
 
 У Вас должен быть установлен node
