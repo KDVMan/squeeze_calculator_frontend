@@ -8,7 +8,7 @@
 
 ----
 
-https://i.postimg.cc/3NJnbTpJ/Screenshot-1.png
+[Screenshot-1.png](https://postimg.cc/wyZX7n0S)
 
 Фронтенд для калькулятора сквизов (squeeze calculator)
 
