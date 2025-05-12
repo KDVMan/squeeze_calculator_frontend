@@ -8,6 +8,18 @@
 
 ----
 
+Список репозиториев:
+
+Фронтенд squeeze кальулятор :https://github.com/KDVMan/squeeze_calculator_frontend
+
+Бекенд squeeze калькулятор: https://github.com/KDVMan/squeeze_calculator_backend
+
+Фронтэнд squeeze бота для торговли: https://github.com/KDVMan/squeeze_bot_frontend
+
+Бекенд squeeze бота для торговли: https://github.com/KDVMan/squeeze_bot_backend
+
+----
+
 ![](https://i.postimg.cc/3NJnbTpJ/Screenshot-1.png)
 
 Информационное видео: https://www.youtube.com/watch?v=oWRoKbkZE0I
