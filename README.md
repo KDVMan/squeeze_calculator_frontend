@@ -10,6 +10,8 @@
 
 ![](https://i.postimg.cc/3NJnbTpJ/Screenshot-1.png)
 
+Информационное видео: https://www.youtube.com/watch?v=oWRoKbkZE0I
+
 Фронтенд для калькулятора сквизов (squeeze calculator)
 
 У Вас должен быть установлен node
