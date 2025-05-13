@@ -1,3 +1,7 @@
+Буду благодарен за подписку на мой канал: https://t.me/kdv_trade
+
+----
+
 Есть такой продукт: https://squeeze-calculator.lexx-trade.com/
 
 Данный калькулятор переписан и доработан на golang
